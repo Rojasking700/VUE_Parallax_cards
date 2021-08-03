@@ -1,28 +1,49 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main id="app">
+    <section>
+    <Parallax 
+    v-for="pic in parallaxPics"
+    :key="pic.title"
+    :pic="pic"
+    />
+    </section>
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Parallax from './components/Parallax.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Parallax
+  },
+  data () {
+    return {
+      parallaxPics: [
+        {
+          title: 'bg',
+          src: require('./assets/bg.jpg')
+        },
+        {
+          title: 'moon',
+          src: require('./assets/moon.png')
+        },
+        {
+          title: 'mountain',
+          src: require('./assets/mountain.png')
+        },
+        {
+          title: 'road',
+          src: require('./assets/road.png')
+        },
+      ]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
