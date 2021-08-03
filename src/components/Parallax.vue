@@ -1,9 +1,6 @@
 <template>
     <div class="parallax" >
-        <div > 
-            <img :src="pic.src" :id="pic.title" />
-        </div>
-        
+        <img :src="pic.src" :id="pic.title" />
     </div>
 </template>
 

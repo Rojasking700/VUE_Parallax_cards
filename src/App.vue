@@ -1,5 +1,5 @@
 <template>
-  <main id="app" @scroll.passive="scroll">
+  <main id="app" @scroll.passive="scroll" @mousemove="mousemove">
     <section class="parrallax">
     <Parallax 
     v-for="pic in parallaxPics"
@@ -8,19 +8,28 @@
     />
     <h2 id="Mtext">Moonlight</h2>
     </section>
+    <section class="products">
+      <Product 
+      v-for="product in products"
+      :key=product.color
+      :product="product"
+      />
+    </section>
   </main>
 </template>
 
 <script>
 
 import Parallax from './components/Parallax'
+import Product from './components/Product.vue'
 
 export default {
   name: 'App',
   components: {
-    Parallax
+    Parallax,
+    Product
   },
-  data () {
+    data() {
     return {
       parallaxPics: [
         {
@@ -39,6 +48,26 @@ export default {
           title: 'road',
           src: require('./assets/road.png')
         },
+      ],
+      products: [
+        {
+          title: 'Nike Air Max',
+          color: 'green',
+          bgtext: 'NIKE',
+          src: require('./assets/green-shoe.png')
+        },
+        {
+          title: 'Nike Flex',
+          color: 'blue',
+          bgtext: 'AIR',
+          src: require('./assets/blue-shoe.png')
+        },
+        {
+          title: 'Nike Rouche Runs',
+          color: 'pink',
+          bgtext: 'MAX',
+          src: require('./assets/pink-shoe.png')
+        }
       ]
     }
   },
@@ -58,14 +87,44 @@ export default {
       mountain.style.top = -value * 0.15 + 'px';
       road.style.top = value * 0.15 + 'px';
       Mtext.style.top = value * 1 + 'px';
+    },
+    mousemove(e) {
+      let mouseX = e.clientX;
+      let mouseY = e.clientY;
+
+      let products = document.querySelectorAll('.products .product')
+
+      for (let i=0; i<products.length; i++) {
+        let product = products[i];
+
+        let product_image = product.querySelector('.product-image-wrap');
+
+        let img_x = mouseX - this.coords(product_image).x;
+        let img_y = mouseY - this.coords(product_image).y;
+        product_image.style.transform = `translateY(-${img_y/20}px) translateX(-${img_x/20}px) translateZ(100px)`;
+
+        let bgtext = product.querySelector('.bg-text');
+        let bg_x = mouseX - this.coords(bgtext).x;
+        let bg_y = mouseY - this.coords(bgtext).y;
+
+        bgtext.style.transform = `translateX(${bg_x/25}px) translateY(${bg_y/25}px)`;
+      }
+    },
+    coords (el) {
+      let coords = el.getBoundingClientRect();
+
+      return { 
+        x: coords.left / 2,
+        y: coords.top /2
+      }
     }
   },
   created () {
   window.addEventListener('scroll', this.handleScroll);
-}, 
-destroyed () {
-  window.removeEventListener('scroll', this.handleScroll);
-}
+  }, 
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 }
 </script>
 
@@ -80,6 +139,13 @@ destroyed () {
         background: #0a2a43;
         min-height: 15000px;
     }
+
+  .products {
+    display: flex;
+    max-width: 1280px;
+    padding: 25px;
+    margin: 0 auto;
+  }
 
     .parrallax{
         position: relative;
