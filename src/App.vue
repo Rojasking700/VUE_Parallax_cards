@@ -158,6 +158,14 @@ export default {
     margin:  auto;
   }
 
+  @media (max-width: 800px){
+    .products{
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+  }
+
   .parrallax{
     position: relative;
     width: 100%;
