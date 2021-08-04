@@ -9,7 +9,7 @@
     <h2 id="Mtext">Moonlight</h2>
     </section>
     <section >
-      <h2 id="text">ROJASKING700</h2>
+      <h2 id="codingis">ROJASKING700</h2>
     </section>
     <section class="products">
       <Product 
@@ -81,9 +81,9 @@ export default {
       let mountain = document.getElementById('mountain')
       let road = document.getElementById('road')
       let Mtext = document.getElementById('Mtext')
-      let text = document.getElementById('text')
+      // let text = document.getElementById('text')
 
-      console.log(this.coords(text));
+      // console.log(this.coords(text));
 
       var value = window.scrollY;
 
@@ -92,9 +92,6 @@ export default {
       mountain.style.top = -value * 0.15 + 'px';
       road.style.top = value * 0.15 + 'px';
       Mtext.style.top = value * 2 + 'px';
-      if( window.screen.width >= 800){
-        text.style.left = value * 0.5 + 'px';
-      }
 
     },
     mousemove(e) {
@@ -141,16 +138,16 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
-*{
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-    }
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
 
-    body {
-        background: #0a2a43;
-        min-height: 15000px;
-    }
+  body {
+    background: #0a2a43;
+    min-height: 15000px;
+  }
 
   .products {
     display: flex;
@@ -158,98 +155,85 @@ export default {
     flex-wrap: wrap;
     max-width: 1280px;
     padding: 25px;
-    padding-top: 20vh;
     margin:  auto;
   }
-/* 
-  @media (max-width: 800px) {
-    .products{
-      flex-direction: column;
-    }
-  } */
 
-    .parrallax{
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .parrallax{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
     
-    .parrallax:before{
-      content: '';
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to top, #0a2a43, transparent);
-      z-index: 1000;
-    }
+  .parrallax:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #0a2a43, transparent);
+    z-index: 1000;
+  }
 
-    .parrallax:after{
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:#0a2a43;
-      z-index: 1000;
-      mix-blend-mode: color;
-    }
+  .parrallax:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#0a2a43;
+    z-index: 1000;
+    mix-blend-mode: color;
+  }
 
-      .parrallax img{
-        position: absolute;
-        top:0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        pointer-events: none;
-      }
+  .parrallax img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
 
-      @media (max-width: 800px) {
-        #moon {
-          top:0;
-          left:0;
-          position: absolute;
-          justify-content: left;
-        }
-      }
-
-    #Mtext {
-      position: relative;
-      color: #fff;
-      font-size: 10vw;
-      z-index: 1;
-    }
-    
-    #text {
-      margin: 20px;
-      position: absolute;
-      color: #fff;
-      font-size: 7vw;
-      z-index: 0;
-    }
-    #text:before{
-
-    }
-    #text:after{
-      
-    }
   @media (max-width: 800px) {
-      #text {
+    #moon {
+      top:0;
+      left:0;
+      position: absolute;
+      justify-content: left;
+    }
+  }
+
+  #Mtext {
+    position: relative;
+    color: #fff;
+    font-size: 10vw;
+    z-index: 1;
+  }
+    
+  #codingis {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    color: #fff;
+    font-size: 7vw;
+    z-index: 0;
+  }
+  @media (max-width: 800px) {
+      #codingis {
         display: flex;
         font-size: 6vw;
-        position: relative;
         justify-content: center;
     }
   }
 
-    #road{
-        z-index: 2;
-    }
+  #road{
+    z-index: 2;
+  }
 </style>
