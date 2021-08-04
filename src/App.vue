@@ -8,6 +8,9 @@
     />
     <h2 id="Mtext">Moonlight</h2>
     </section>
+    <section >
+      <h2 id="text">ROJASKING700</h2>
+    </section>
     <section class="products">
       <Product 
       v-for="product in products"
@@ -73,12 +76,14 @@ export default {
   },
   methods: {
     handleScroll() {
-      console.log("scrolling")
       let bg = document.getElementById('bg')
       let moon = document.getElementById('moon')
       let mountain = document.getElementById('mountain')
       let road = document.getElementById('road')
       let Mtext = document.getElementById('Mtext')
+      let text = document.getElementById('text')
+
+      console.log(this.coords(text));
 
       var value = window.scrollY;
 
@@ -86,7 +91,11 @@ export default {
       moon.style.left = -value * 1 + 'px';
       mountain.style.top = -value * 0.15 + 'px';
       road.style.top = value * 0.15 + 'px';
-      Mtext.style.top = value * 1 + 'px';
+      Mtext.style.top = value * 2 + 'px';
+      if( window.screen.width >= 800){
+        text.style.left = value * 0.5 + 'px';
+      }
+
     },
     mousemove(e) {
       let mouseX = e.clientX;
@@ -130,9 +139,12 @@ export default {
 
 
 <style>
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
 *{
         margin: 0;
         padding: 0;
+        font-family: 'Poppins', sans-serif;
     }
 
     body {
@@ -142,19 +154,28 @@ export default {
 
   .products {
     display: flex;
+    flex:  3;
+    flex-wrap: wrap;
     max-width: 1280px;
     padding: 25px;
-    margin: 0 auto;
+    padding-top: 20vh;
+    margin:  auto;
   }
+/* 
+  @media (max-width: 800px) {
+    .products{
+      flex-direction: column;
+    }
+  } */
 
     .parrallax{
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-content: center;
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     
@@ -181,21 +202,52 @@ export default {
     }
 
       .parrallax img{
-          position: absolute;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+      }
+
+      @media (max-width: 800px) {
+        #moon {
           top:0;
           left:0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          pointer-events: none;
+          position: absolute;
+          justify-content: left;
+        }
       }
 
     #Mtext {
-        position: relative;
-        color: #fff;
-        font-size: 10em;
-        z-index: 1;
+      position: relative;
+      color: #fff;
+      font-size: 10vw;
+      z-index: 1;
     }
+    
+    #text {
+      margin: 20px;
+      position: absolute;
+      color: #fff;
+      font-size: 7vw;
+      z-index: 0;
+    }
+    #text:before{
+
+    }
+    #text:after{
+      
+    }
+  @media (max-width: 800px) {
+      #text {
+        display: flex;
+        font-size: 6vw;
+        position: relative;
+        justify-content: center;
+    }
+  }
 
     #road{
         z-index: 2;

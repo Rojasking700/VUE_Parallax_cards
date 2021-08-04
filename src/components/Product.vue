@@ -26,11 +26,14 @@ export default {
 </script>
 
 <style>
+
     .product {
-        flex: 1 1 33.3333%;
+        flex: 1;
         width: 100%;
         padding: 25px;
     }
+
+    
 
     .product-inner{
         position: relative;
@@ -62,7 +65,7 @@ export default {
 
     .product-text-wrap h2 {
         color: #ffffff;
-        font-size: 128px;
+        font-size: 7vw;
         font-weight: 900;
         opacity: 0.2;
         transform-origin: center;
@@ -87,7 +90,7 @@ export default {
     }
 
     .prduct-detail h2 {
-        font-size: 24px;
+        font-size: 24vh;
         font-weight: 700;
         color: #676767;
         margin-bottom: 15px;
