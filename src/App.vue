@@ -8,9 +8,9 @@
     />
     <h2 id="Mtext">Moonlight</h2>
     </section>
-    <section >
-      <h2 id="codingis">ROJASKING700</h2>
-    </section>
+
+    <Coding-is />
+
     <section class="products">
       <Product 
       v-for="product in products"
@@ -18,11 +18,17 @@
       :product="product"
       />
     </section>
+
+    <section class="Pepsicard">
+    <PepsiCard />
+    </section>
+
   </main>
 </template>
 
 <script>
-
+import CodingIs from './components/CodingIs.vue'
+import PepsiCard from './components/PepsiCard.vue'
 import Parallax from './components/Parallax'
 import Product from './components/Product.vue'
 
@@ -30,7 +36,9 @@ export default {
   name: 'App',
   components: {
     Parallax,
-    Product
+    Product,
+    CodingIs,
+    PepsiCard
   },
     data() {
     return {
@@ -123,10 +131,10 @@ export default {
         x: coords.left / 2,
         y: coords.top /2
       }
-    }
+    },
   },
   created () {
-  window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   }, 
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll);
@@ -135,7 +143,7 @@ export default {
 </script>
 
 
-<style>
+<style >
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
   *{
@@ -163,6 +171,7 @@ export default {
       display: flex;
       flex: 1;
       flex-direction: column;
+      margin-bottom: 20vh;
     }
   }
 
@@ -225,23 +234,18 @@ export default {
     z-index: 1;
   }
     
-  #codingis {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-    color: #fff;
-    font-size: 7vw;
-    z-index: 0;
-  }
-  @media (max-width: 800px) {
-      #codingis {
-        display: flex;
-        font-size: 6vw;
-        justify-content: center;
-    }
-  }
 
   #road{
     z-index: 2;
   }
+
+  .Pepsicard{
+    /* height: 400vh; */
+    margin-top: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
 </style>
