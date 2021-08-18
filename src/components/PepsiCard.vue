@@ -15,35 +15,7 @@
 
 <script>
 export default {
-    methods: {
-        mousemove(e) {
-      let mouseX = e.clientX;
-      let mouseY = e.clientY;
-
-      let product = document.querySelectorAll('.card')
-        // let product = products[i];
-
-        let product_image = product.querySelector('.image');
-
-        let img_x = mouseX - this.coords(product_image).x;
-        let img_y = mouseY - this.coords(product_image).y;
-        product_image.style.transform = `translateY(-${img_y/20}px) translateX(-${img_x/20}px) translateZ(100px)`;
-
-        let bgtext = product.querySelector('.circle');
-        let bg_x = mouseX - this.coords(bgtext).x;
-        let bg_y = mouseY - this.coords(bgtext).y;
-
-        bgtext.style.transform = `translateX(${bg_x/25}px) translateY(${bg_y/25}px)`;
-    },
-    coords (el) {
-      let coords = el.getBoundingClientRect();
-
-      return { 
-        x: coords.left / 2,
-        y: coords.top /2
-      }
-    },
-    },
+    
 }
 </script>
 
